@@ -1,0 +1,32 @@
+#main_container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    background-color: #233E8B;
+}
+
+#new_note__container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    place-items: center;
+    padding: 2%;
+}
+
+#new_note__logo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #231E23;
+    padding: 5% 5%;
+    border-radius: 5px;
+}
+
+#new_note__logo:hover {
+    cursor: pointer;
+    background-color: #1a161a;
+}
