@@ -11,14 +11,17 @@ const saveData = (data) => {
 
 const getData = () => {
   const result = JSON.parse(localStorage.getItem("data"));
-  return result;
+  if (!result) return;
+  if (result.length > 0) return result;
 };
 
 function App() {
+  const data = getData() || {};
+
   const [flag, setFlag] = useState(true);
   const [ContentFlag, setContentFlag] = useState(true);
   const [ContentData, setContentData] = useState([]);
-  const [inputData, setInputData] = useState(getData);
+  const [inputData, setInputData] = useState(data);
 
   const showForm = (flag) => {
     setFlag(flag);
@@ -26,8 +29,8 @@ function App() {
 
   const addDataToList = (data) => {
     setInputData((prevData) => {
-      saveData([data, ...prevData]);
-      return [data, ...prevData];
+      saveData([data, ...Array.from(prevData)]);
+      return [data, ...Array.from(prevData)];
     });
   };
 
