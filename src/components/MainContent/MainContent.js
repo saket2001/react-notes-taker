@@ -21,8 +21,14 @@ const MainContent = (props) => {
   return props.data.length > 0 ? (
     <div id="main_content__container">{content}</div>
   ) : (
-    <div id="main_content__container">
+    <div id="Message_container">
       <p>Start creating notes now !!</p>
+      <p>Remember This</p>
+      <ol>
+        <li>To create new note press on plus button above</li>
+        <li>To save a note after adding content press on back arrow button</li>
+        <li>You can store upto 7 big notes</li>
+      </ol>
     </div>
   );
 };

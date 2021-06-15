@@ -5,12 +5,20 @@ import ViewContent from "./components/MainContent/ViewContent";
 import { useState } from "react";
 import "./index.css";
 
+const saveData = (data) => {
+  localStorage.setItem("data", JSON.stringify(data));
+};
+
+const getData = () => {
+  const result = JSON.parse(localStorage.getItem("data"));
+  return result;
+};
+
 function App() {
-  const data = [];
   const [flag, setFlag] = useState(true);
   const [ContentFlag, setContentFlag] = useState(true);
   const [ContentData, setContentData] = useState([]);
-  const [inputData, setInputData] = useState(data);
+  const [inputData, setInputData] = useState(getData);
 
   const showForm = (flag) => {
     setFlag(flag);
@@ -18,6 +26,7 @@ function App() {
 
   const addDataToList = (data) => {
     setInputData((prevData) => {
+      saveData([data, ...prevData]);
       return [data, ...prevData];
     });
   };
@@ -30,6 +39,7 @@ function App() {
   const DeleteItem = (id) => {
     const newData = inputData.filter((item) => item.id !== +id);
     setInputData(newData);
+    saveData(newData);
   };
 
   return (

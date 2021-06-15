@@ -53,9 +53,32 @@
 
 }
 
-p {
+#Message_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2%;
+    margin: 1%;
+}
+
+#Message_container p {
     font-size: 1.3rem;
     font-family: bold;
-    margin-top: 2%;
     padding: 2% auto;
+}
+
+#Message_container ol {
+    width: 100%;
+    padding: 2% 4%;
+}
+
+#Message_container ol li {
+    width: inherit;
+    font-size: 0.9rem;
+    padding: 2%;
+    color: #b5bebc;
+
 }

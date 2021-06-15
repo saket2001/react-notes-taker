@@ -22,7 +22,7 @@ const AddNewNote = (props) => {
     <div id={styles.main_container}>
       {props.flag === true ? (
         <div id={styles.new_note__container}>
-          <p>Add new note</p>
+          <p>Note Taker</p>
           <div id={styles.new_note__logo} onClick={showForm}>
             <img src={logo} alt="plus logo" />
           </div>
