@@ -2,8 +2,30 @@ import styles from "./ViewContent.module.css";
 import logo from "../Form/icons8-back-arrow-50.png";
 import trashLogo from "./icons8-trash-24.png";
 
+import { useState } from "react";
+
 const ViewContent = (props) => {
+  const [noteTitle, setTitle] = useState("");
+  const [noteContent, setContent] = useState("");
+
+  const titleHandler = (e) => {
+    setTitle(e.target.innerHTML);
+  };
+  const ContentHandler = (e) => {
+    setContent(e.target.innerHTML);
+  };
+
   const hideDiv = () => {
+    const formData = {
+      id: props.data.id,
+      title: noteTitle,
+      content: noteContent,
+      date: new Date().toISOString(),
+    };
+
+    if (formData.title.length > 0 && formData.content.length > 0)
+      props.formSubmit(formData);
+
     props.clickHandler(true, "");
   };
 
@@ -21,8 +43,18 @@ const ViewContent = (props) => {
         </button>
       </div>
       <div id={styles.view__content}>
-        <div className={styles.view__content__title}>{props.data.title}</div>
-        <div className={styles.view__content__content}>
+        <div
+          className={styles.view__content__title}
+          contentEditable="true"
+          onClick={titleHandler}
+        >
+          {props.data.title}
+        </div>
+        <div
+          className={styles.view__content__content}
+          contentEditable="true"
+          onClick={ContentHandler}
+        >
           {props.data.content}
         </div>
       </div>

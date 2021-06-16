@@ -28,9 +28,27 @@ function App() {
   };
 
   const addDataToList = (data) => {
+    console.log(data);
     setInputData((prevData) => {
       saveData([data, ...Array.from(prevData)]);
       return [data, ...Array.from(prevData)];
+    });
+  };
+  const addUpdatedDataToList = (data) => {
+    setInputData((prevData) => {
+      prevData = Array.from(prevData);
+      // Array.from(prevData).forEach((item) => {
+      //   if (item.id === data.id) {
+      //     item.title = data.title;
+      //     item.content = data.content;
+      //     item.date = data.date;
+      //   }
+      // });
+      const index = prevData.findIndex((item) => +item.id === +data.id);
+      console.log(index);
+      prevData.splice(index, 1);
+      saveData([data, ...prevData]);
+      return [data, ...prevData];
     });
   };
 
@@ -40,7 +58,7 @@ function App() {
   };
 
   const DeleteItem = (id) => {
-    const newData = inputData.filter((item) => item.id !== +id);
+    const newData = inputData.filter((item) => +item.id !== +id);
     setInputData(newData);
     saveData(newData);
   };
@@ -72,6 +90,7 @@ function App() {
           data={ContentData}
           clickHandler={ContentDisplayHandler}
           deleteHandler={DeleteItem}
+          formSubmit={addUpdatedDataToList}
         />
       ) : (
         ""

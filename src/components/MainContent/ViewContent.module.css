@@ -56,3 +56,23 @@
     border-radius: 8px;
     background-color: transparent;
 }
+
+input[type='text'],
+textarea {
+    width: 80%;
+    background-color: #231E23;
+    font-size: 1.5rem;
+    margin: 2% 0;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+textarea {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+::placeholder {
+    color: #DEEEEA;
+}
