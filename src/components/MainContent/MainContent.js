@@ -27,6 +27,7 @@ const MainContent = (props) => {
       <ol>
         <li>To create new note press on plus button above</li>
         <li>To save a note after adding content press on back arrow button</li>
+        <li>To save after update click on title again</li>
         <li>You can store upto 7 big notes</li>
       </ol>
     </div>
