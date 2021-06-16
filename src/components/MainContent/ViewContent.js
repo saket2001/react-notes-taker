@@ -2,24 +2,17 @@ import styles from "./ViewContent.module.css";
 import logo from "../Form/icons8-back-arrow-50.png";
 import trashLogo from "./icons8-trash-24.png";
 
-import { useState } from "react";
+import { useRef } from "react";
 
 const ViewContent = (props) => {
-  const [noteTitle, setTitle] = useState("");
-  const [noteContent, setContent] = useState("");
-
-  const titleHandler = (e) => {
-    setTitle(e.target.innerHTML);
-  };
-  const ContentHandler = (e) => {
-    setContent(e.target.innerHTML);
-  };
+  let noteTitle = useRef();
+  let noteContent = useRef();
 
   const hideDiv = () => {
     const formData = {
       id: props.data.id,
-      title: noteTitle,
-      content: noteContent,
+      title: noteTitle.current.innerHTML,
+      content: noteContent.current.innerHTML,
       date: new Date().toISOString(),
     };
 
@@ -46,14 +39,14 @@ const ViewContent = (props) => {
         <div
           className={styles.view__content__title}
           contentEditable="true"
-          onClick={titleHandler}
+          ref={noteTitle}
         >
           {props.data.title}
         </div>
         <div
           className={styles.view__content__content}
           contentEditable="true"
-          onClick={ContentHandler}
+          ref={noteContent}
         >
           {props.data.content}
         </div>

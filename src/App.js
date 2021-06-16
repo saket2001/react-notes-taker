@@ -37,15 +37,7 @@ function App() {
   const addUpdatedDataToList = (data) => {
     setInputData((prevData) => {
       prevData = Array.from(prevData);
-      // Array.from(prevData).forEach((item) => {
-      //   if (item.id === data.id) {
-      //     item.title = data.title;
-      //     item.content = data.content;
-      //     item.date = data.date;
-      //   }
-      // });
       const index = prevData.findIndex((item) => +item.id === +data.id);
-      console.log(index);
       prevData.splice(index, 1);
       saveData([data, ...prevData]);
       return [data, ...prevData];
